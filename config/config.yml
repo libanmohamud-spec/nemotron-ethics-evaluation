@@ -1,0 +1,40 @@
+# NeMo Guardrails: Nemotron Content Safety Reasoning via vLLM (OpenAI-compatible).
+# Start vLLM first: bash start_server.sh  -> http://localhost:8001/v1
+#
+# Main LLM: uses the same OpenAI-compatible endpoint so a single vLLM process
+# can serve evaluation (content safety runs first; main is only used if input passes).
+# Override with env OPENAI_API_BASE / OPENAI_API_KEY if needed.
+
+models:
+  - type: main
+    engine: openai
+    model: nvidia/Nemotron-Content-Safety-Reasoning-4B
+    parameters:
+      openai_api_base: http://localhost:8001/v1
+      openai_api_key: "${OPENAI_API_KEY:-EMPTY}"
+      temperature: 0.7
+      max_tokens: 512
+
+  - type: content_safety_reasoning
+    engine: openai
+    model: nvidia/Nemotron-Content-Safety-Reasoning-4B
+    parameters:
+      openai_api_base: http://localhost:8001/v1
+      openai_api_key: "${OPENAI_API_KEY:-EMPTY}"
+      temperature: 0.6
+      top_p: 0.95
+
+rails:
+  config:
+    content_safety:
+      reasoning:
+        # false = /no_think (low latency); true = /think (chain-of-thought traces)
+        enabled: false
+
+  input:
+    flows:
+      - content safety check input $model=content_safety_reasoning
+
+  output:
+    flows:
+      - content safety check output $model=content_safety_reasoning
