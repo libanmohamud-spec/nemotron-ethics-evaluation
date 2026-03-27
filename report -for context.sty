@@ -359,7 +359,7 @@ The most important ethical tension lies between the values of end users and marg
 
 This chapter documents the implementation of an ethical evaluation framework for the Nemotron-Content-Safety-Reasoning-4B content-safety classifier. It describes the repository, the approach taken to validate both functional and ethical goals, the points of ethical conflict that emerged from the system architecture, and evidence of those validations.
 
-\textbf{Link to Repository:} \href{https://github.com/1violett/nemotron-ethics-evaluation}{https://github.com/1violett/nemotron-ethics-evaluation}
+\textbf{Link to Repository:} \href{https://github.com/libanmohamud-spec/nemotron-ethics-evaluation}{https://github.com/libanmohamud-spec/nemotron-ethics-evaluation}
 
 \section{Description of Approach}
 
@@ -442,7 +442,7 @@ The implementation surfaced four substantive tensions between the system's funct
 
 \section{Evidence}
 
-The following subsections present evidence for both functional and ethical goal validation. Screenshots are drawn from the evaluation scripts in the repository at \url{https://github.com/1violett/nemotron-ethics-evaluation}.
+The following subsections present evidence for both functional and ethical goal validation. Screenshots are drawn from the evaluation scripts in the repository at \url{https://github.com/libanmohamud-spec/nemotron-ethics-evaluation}.
 
 \begin{lstlisting}[style=py, caption={Core guardrails configuration (config.yml)}]
 models:
@@ -497,7 +497,7 @@ print(response["content"])
 
 \subsection*{Functional Goal Evidence}
 
-Figures 3.1--3.6 live under \texttt{evidence/functional/} in the repository (see \href{https://github.com/1violett/nemotron-ethics-evaluation/tree/main/evidence/functional}{GitHub}) and correspond to the terminal outputs, confusion matrices, and latency plots produced by \texttt{run\_functional\_tests.py}.
+Figures 3.1--3.6 live under \texttt{evidence/functional/} in the repository (see \href{https://github.com/libanmohamud-spec/nemotron-ethics-evaluation/tree/main/evidence/functional}{GitHub}) and correspond to the terminal outputs, confusion matrices, and latency plots produced by \texttt{run\_functional\_tests.py}.
 
 \begin{figure}[H]
 \centering
@@ -543,7 +543,7 @@ Figures 3.1--3.6 live under \texttt{evidence/functional/} in the repository (see
 
 \subsection*{Ethical Goal Evidence}
 
-Figures 3.7--3.9 live under \texttt{evidence/ethical/} (see \href{https://github.com/1violett/nemotron-ethics-evaluation/tree/main/evidence/ethical}{GitHub}) and correspond to demographic parity, audit log output, and false-positive rate summaries from \texttt{run\_ethical\_tests.py} and \texttt{generate\_audit\_log.py}.
+Figures 3.7--3.9 live under \texttt{evidence/ethical/} (see \href{https://github.com/libanmohamud-spec/nemotron-ethics-evaluation/tree/main/evidence/ethical}{GitHub}) and correspond to demographic parity, audit log output, and false-positive rate summaries from \texttt{run\_ethical\_tests.py} and \texttt{generate\_audit\_log.py}.
 
 \begin{figure}[H]
 \centering
